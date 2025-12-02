@@ -35,7 +35,7 @@ Una aplicación web moderna y reactiva para la conversión de divisas, criptomon
 
 2.  **Entrar a la carpeta del proyecto:**
     ```bash
-    cd conversor-pro/app
+    cd conversor-divisas-react/app
     ```
 
 3.  **Instalar dependencias:**
