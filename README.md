@@ -30,7 +30,7 @@ Una aplicación web moderna y reactiva para la conversión de divisas, criptomon
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone [https://github.com/tobidelos/conversor-divisas-pro.git](https://github.com/tobidelos/conversor-divisas-pro.git)
+    git clone https://github.com/tobidelos/conversor-divisas-react
     ```
 
 2.  **Entrar a la carpeta del proyecto:**
