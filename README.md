@@ -26,31 +26,32 @@ Una aplicación web moderna y reactiva para la conversión de divisas, criptomon
 
 **APIs**: Integración asíncrona con múltiples endpoints financieros públicos.
 
-### 📦 Instalación y Uso
+## 📦 Instalación y Uso
 
-**1. Clonar el repositorio**:
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone [https://github.com/tobidelos/conversor-divisas-pro.git](https://github.com/tobidelos/conversor-divisas-pro.git)
+    ```
 
-```git clone https://github.com/tobidelos/conversor-divisas-react```
+2.  **Entrar a la carpeta del proyecto:**
+    ```bash
+    cd conversor-pro/app
+    ```
 
-```cd conversor-divisas-react```
+3.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
 
-
-**2. Instalar dependencias**:
-
-```npm install```
-
-
-**3. Iniciar servidor de desarrollo**:
-
-```npm run dev```
-
-
-**4. Abrir en el navegador (usualmente ```http://localhost:5173```).**
+4.  **Iniciar servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
 
 #### 🤝 Contribución
 
 Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir lo que te gustaría cambiar.
 
-<p class="text-xs text-slate-500 font-medium">
-  Desarrollado por <a href="https://github.com/tobidelos" target="_blank" rel="noopener noreferrer" class="text-indigo-500 hover:text-indigo-700 underline font-bold">ttobidelos</a>
+<p class="text-xs font-medium text-slate-500">
+  Desarrollado por <a href="https://github.com/tobidelos" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-500 underline hover:text-indigo-700">ttobidelos</a>
 </p>
