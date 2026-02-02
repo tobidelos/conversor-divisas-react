@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowRightLeft, RefreshCw, TrendingUp, Clock, Calculator, Info, Coins, ShieldCheck, Zap, Gem, Droplet, Hammer, X } from 'lucide-react';
 
-// --- TIPOS ---
+// types
 const TYPE_FIAT = 'fiat';
 const TYPE_CRYPTO = 'crypto';
 const TYPE_METAL = 'metal';
 const TYPE_ENERGY = 'energy';
 
-// --- CONFIGURACIÓN DE MONEDAS ---
 const CURRENCIES = [
-  // --- DIVISAS (FIAT) ---
   { code: 'USD', name: 'Dólar Estadounidense', country: 'US', symbol: '$', type: TYPE_FIAT },
   { code: 'EUR', name: 'Euro', country: 'EU', symbol: '€', type: TYPE_FIAT },
   { code: 'GBP', name: 'Libra Esterlina', country: 'GB', symbol: '£', type: TYPE_FIAT },
@@ -36,14 +34,12 @@ const CURRENCIES = [
   { code: 'NZD', name: 'Dólar Neozelandés', country: 'NZ', symbol: '$', type: TYPE_FIAT },
   { code: 'SGD', name: 'Dólar Singapur', country: 'SG', symbol: '$', type: TYPE_FIAT },
 
-  // --- MATERIAS PRIMAS (Metales y Energía) ---
   { code: 'XAU', name: 'Oro (Onza troy)', symbol: 'Au', type: TYPE_METAL, cryptoId: 'pax-gold' }, 
   { code: 'XAG', name: 'Plata (Onza troy)', symbol: 'Ag', type: TYPE_METAL, cryptoId: 'kinesis-silver' }, 
   { code: 'XPT', name: 'Platino (Onza troy)', symbol: 'Pt', type: TYPE_METAL }, 
   { code: 'WTI', name: 'Petróleo WTI', symbol: 'Oil', type: TYPE_ENERGY, cryptoId: 'wti-usd' }, 
   { code: 'BRENT', name: 'Petróleo Brent', symbol: 'Oil', type: TYPE_ENERGY },
   
-  // --- CRIPTOMONEDAS ---
   { code: 'BTC', name: 'Bitcoin', symbol: '₿', type: TYPE_CRYPTO, cryptoId: 'bitcoin' },
   { code: 'ETH', name: 'Ethereum', symbol: 'Ξ', type: TYPE_CRYPTO, cryptoId: 'ethereum' },
   { code: 'USDT', name: 'Tether', symbol: '₮', type: TYPE_CRYPTO, cryptoId: 'tether' },
@@ -51,13 +47,12 @@ const CURRENCIES = [
   { code: 'SOL', name: 'Solana', symbol: '◎', type: TYPE_CRYPTO, cryptoId: 'solana' },
 ];
 
-// --- PRECIOS DE RESPALDO (Mecanismo de seguridad) ---
+// backup
 const BACKUP_RATES_USD = {
   XAU: 2350.50, XAG: 28.20, XPT: 980.00, WTI: 78.50, BRENT: 82.30, BTC: 65000.00, ETH: 3500.00
 };
 
-// --- COMPONENTES AUXILIARES ---
-
+// auxiliar
 const GoldBarIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 shrink-0">
     <path d="M4 8L7 6H20L17 8H4Z" fill="#F59E0B" stroke="#D97706" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -157,7 +152,6 @@ const TransparencyModal = ({ onClose }) => (
   </div>
 );
 
-// --- APP PRINCIPAL ---
 export default function App() {
   const [amount, setAmount] = useState('1'); 
   const [fromCurrency, setFromCurrency] = useState('USD');
@@ -167,8 +161,7 @@ export default function App() {
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-
-  // --- EFECTO PARA CAMBIAR EL TÍTULO DE LA PESTAÑA ---
+  
   useEffect(() => {
     document.title = "Conversor de Divisas";
   }, []);
@@ -177,11 +170,9 @@ export default function App() {
   const cryptoList = CURRENCIES.filter(c => c.type === TYPE_CRYPTO);
   const metalList = CURRENCIES.filter(c => c.type === TYPE_METAL || c.type === TYPE_ENERGY);
 
-  // Lógica de fallback robusta
+  // fallback
   const fetchAssetFallback = async (missingCode) => {
     const asset = CURRENCIES.find(c => c.code === missingCode);
-    
-    // 1. Intento API Cripto
     if (asset && asset.cryptoId) {
         try {
           const res = await fetch(`https://api.coincap.io/v2/assets/${asset.cryptoId}`);
@@ -203,8 +194,6 @@ export default function App() {
            }
         } catch (e) { console.warn("CoinGecko error", e); }
     }
-
-    // 2. ULTIMO RECURSO: Usar valor estático de respaldo para evitar "Cotización no disponible"
     if (BACKUP_RATES_USD[missingCode]) {
         console.warn(`Usando valor de respaldo para ${missingCode}`);
         return 1 / BACKUP_RATES_USD[missingCode];
@@ -262,7 +251,6 @@ export default function App() {
           const backupFrom = BACKUP_RATES_USD[fromCurrency] ? (1/BACKUP_RATES_USD[fromCurrency]) : null;
           const backupTo = BACKUP_RATES_USD[toCurrency] ? (1/BACKUP_RATES_USD[toCurrency]) : null;
           
-          // Si la moneda es fiat y falló la API, asumimos 1 si es USD, o fallamos.
           if (!rateFrom && fromCurrency === 'USD') rateFrom = 1;
           if (!rateTo && toCurrency === 'USD') rateTo = 1;
 
