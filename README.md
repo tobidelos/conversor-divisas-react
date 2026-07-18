@@ -1,6 +1,9 @@
 # Conversor global de divisas & activos (Fintech UI)
 
-**React.js • Tailwind CSS • Framer Motion • Recharts • API REST Múltiple**
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/framer--motion-black?style=for-the-badge&logo=framer&logoColor=blue)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
 Una aplicación web financiera (Fintech) de extremo a extremo diseñada con estándares de interfaces de usuario modernas (Glassmorphism) y tolerancia a fallos para la conversión en tiempo real de divisas, criptomonedas y materias primas.
 
