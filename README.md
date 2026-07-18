@@ -97,5 +97,5 @@ Al ser una aplicación de lado del cliente (Frontend), el despliegue es rápido 
 
 ---
 <p align="center" style="font-size: 12px; color: gray;">
-  Ingeniería Frontend y Diseño UI/UX por <a href="https://github.com/tobidelos" target="_blank" style="font-weight: bold; color: #6366f1;">ttobidelos</a>
+  Desarrollado por<a href="https://github.com/tobidelos" target="_blank" style="font-weight: bold; color: #6366f1;">ttobidelos</a>
 </p>
