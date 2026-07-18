@@ -21,6 +21,19 @@ Para reflejar los retos del ecosistema financiero real, este proyecto no depende
 
 El flujo se divide en módulos independientes, separando drásticamente la lógica de obtención de datos de la interfaz visual.
 
+```mermaid
+graph TD
+    A1[ExchangeRate-API] -->|Fiat Data| B(useExchangeRates.js)
+    A2[CoinCap / CoinGecko] -->|Crypto & Metals| B
+    B -->|Fallback & Polling| C{App.jsx}
+    C -->|State: fromCurrency| D[CurrencyField.jsx]
+    C -->|State: toCurrency| D
+    C -->|Simulated History| E[TrendChart.jsx]
+    E -->|Recharts Area| F((Data Viz))
+    C -->|Disclosures| G[TransparencyModal.jsx]
+    D -->|User Interactions| C
+```
+
 ### 🛠️ Tecnologías y Complejidad
 - **Custom Hooks (Lógica Aislada):** Toda la lógica de negocio, promesas asíncronas y *polling* automático (actualización cada 60s) se abstrajo en `useExchangeRates.js`, manteniendo los componentes de la interfaz completamente puros y enfocados solo en el renderizado.
 - **Eficiencia de Renderizado:** Uso extensivo de `useMemo` y `useCallback` en React para evitar re-renderizados costosos al procesar y formatear números o al autogenerar el gráfico de tendencias.
