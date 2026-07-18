@@ -1,4 +1,4 @@
-# 💱 Conversor Global de Divisas & Activos (Fintech UI)
+# 💱 Conversor global de divisas & activos (Fintech UI)
 
 **React.js • Tailwind CSS • Framer Motion • Recharts • API REST Múltiple**
 
